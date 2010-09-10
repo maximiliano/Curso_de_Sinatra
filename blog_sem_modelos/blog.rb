@@ -4,13 +4,6 @@ require 'yaml'
 
 class Blog < Sinatra::Base
 
-  helpers do
-    def imprimir (mensagem)
-      mensagem.upcase!
-      "#{mensagem}"
-    end
-  end
-
   get '/' do
     erb :index
   end
@@ -51,6 +44,16 @@ class Blog < Sinatra::Base
     erb :posts_encontrados
   end
 
+  helpers do
+    def imprimir (mensagem)
+      mensagem.upcase!
+      "#{mensagem}"
+    end
+  end
+
+  not_found do
+    "Pagina nao encontrada"
+  end
 end
 
 Blog.run!
