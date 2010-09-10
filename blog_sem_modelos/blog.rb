@@ -4,8 +4,19 @@ require 'yaml'
 
 class Blog < Sinatra::Base
 
+  helpers do
+    def imprimir (mensagem)
+      mensagem.upcase!
+      "#{mensagem}"
+    end
+  end
+
   get '/' do
     erb :index
+  end
+
+  get '/helper' do
+    imprimir("Testando um helper")
   end
 
   get '/novo_post' do
