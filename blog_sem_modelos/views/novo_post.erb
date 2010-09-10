@@ -1,0 +1,19 @@
+<html>
+  <head><title> Layout </title> </head>
+  <body>
+    <ul>
+      <li><a href="/"> Home </a></li>
+      <li><a href="/novo_post"> Criar novo post </a></li>
+      <li><a href="/posts"> Ver todos os posts </a></li>
+      <li><a href="/procurar"> Buscar um post </a></li>
+    </ul>
+
+    <form action="/novo_post" method="post">
+      <label> Titulo </label> <br />
+      <input name="titulo" type="text" /> <br />
+      <label> Conteudo </label> <br />
+      <textarea cols="100" rows="10" name="conteudo"></textarea> <br />
+      <input type="submit" value="Postar" />
+    </form>
+  </body>
+</html>

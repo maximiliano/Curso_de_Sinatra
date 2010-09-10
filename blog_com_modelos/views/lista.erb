@@ -1,0 +1,34 @@
+<% @posts = Post.all %>
+<h2>Your <%= @posts.length %> posts </h2>
+<ol>
+  <% @posts.each do |post| %>
+    <li>
+      <label> Post: </label>
+      <%= post.titulo %> <br />
+      <a href= "/posts/<%= post.id %>"> Detalhes </a> 
+      |
+      <a href="/posts/<%= post.id %>/edit"> Editar </a> 
+      |
+      <a href="/posts/<%= post.id %>/delete"> Remover </a>
+    </li>
+  <% end %>
+</ol>
+
+<h2> Novo post </h2>
+<form method="post" action="/posts">
+  <label> Titulo: </label> <br />
+  <input type="text" id="titulo" name="titulo" value= "" /> <br />
+  <label> Conteudo: </label><br />
+  <textarea rols="10" cols="50" name="conteudo" id="conteudo"> </textarea> <br />
+  <label> Tags: </label> <br />
+  <input type="text" id="tags" name="tags" /> <br />
+  <input type="submit" value= "Criar" />
+</form>
+
+<br />
+
+<h2> Tags </h2>
+
+<% Tag.all.each do |tag| %>
+  <a href="/tags/<%= tag.id %>"><%= tag.nome %></a >&nbsp &nbsp
+<% end %>

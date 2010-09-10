@@ -1,0 +1,35 @@
+<label> Titulo: </label>
+<%= @post.titulo %>
+<br />
+<label> Conteudo: </label>
+<%= @post.conteudo %>
+<br />
+
+<a href="/posts/<%=@post.id%>/delete"> Remover </a>
+ou 
+<a href="/posts/<%=@post.id%>/edit"> Edit </a> <br />
+
+<h3> Tags </h3>
+<% @post.tags.each do |tag| %>
+  <a href="/tags/<%= tag.id %>"><%= tag.nome %></a> &nbsp; &nbsp;
+<% end %>
+
+<h3> Comentarios </h3>
+
+<ol>
+  <% @post.comments.each do |comment| %>
+    <li> 
+      <label> comentario: </label>
+      <%= comment.body %>
+    </li>
+  <% end %>
+</ol>
+
+<form method="post" action="/posts/<%= @post.id %>/comments">
+  <label> Insira um comentario: </label> <br />
+  <textarea cols="50" rows="10" name="comment[body]" id="comment[body]"></textarea> <br />
+  <br />
+  <input type="submit" value= "Comentar" />
+</form>
+
+<a href='/'> Back </a>

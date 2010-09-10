@@ -1,0 +1,11 @@
+<form method="post" action="/posts/<%= @post.id %>">
+
+  <label> Titulo: </label>
+  <input type="text" name="post[titulo]" id="post_titulo" value="<%=@post.titulo%>" /> <br />
+  <label> Conteudo: </label>
+  <textarea rols="50" cols="50" name="post[conteudo]" id="post_conteudo"><%= @post.conteudo %></textarea>
+  <br />
+  <input type="submit" value= "Atualizar" />
+</form>
+
+<a href='/posts/<%= @post.id %>'> Voltar ao post </a>

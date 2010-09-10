@@ -1,0 +1,21 @@
+<html>
+  <head><title> Layout </title> </head>
+  <body>
+    <ul>
+      <li><a href="/"> Home </a></li>
+      <li><a href="/novo_post"> Criar novo post </a></li>
+      <li><a href="/posts"> Ver todos os posts </a></li>
+      <li><a href="/procurar"> Buscar um post </a></li>
+    </ul>
+
+    <% if @posts.size > 0 %>
+    <%   @posts.each do |post| %>
+           <strong> Titulo: </strong> <br /> <%= post["Titulo"] %> <br />
+           <strong> Conteudo: </strong> <br /> <%= post["Conteudo"] %> <br /><br />
+         <% end %>
+    <% else %>
+      <strong> Nenhum post com esse titulo encontrado </strong>
+    <% end %>
+  
+  </body>
+</html>
