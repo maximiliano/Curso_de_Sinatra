@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'erb'
 require 'sequel'
 
 DB = Sequel.sqlite('./db/blog.db')
@@ -24,16 +23,22 @@ class Blog < Sinatra::Base
     post.titulo = params[:titulo]
     post.conteudo = params[:conteudo]
     post.save
-    params[:tags].split.each do |tag|
-      Tag.all.each do |tag_cmp|
-        if tag == tag_cmp.nome
-          post.add_tag(tag_cmp)
-          redirect '/'
+    
+    tags = params[:tags].split
+    tags.each do |tag|
+      adicionou = false
+      Tag.all.each do |tag_existente|
+        if tag == tag_existente.nome
+          post.add_tag(tag_existente)    
+          adicionou = true
+          break
         end
       end
-      post.add_tag(:nome => tag)
-    end
 
+      unless adicionou
+        post.add_tag(:nome => tag)
+      end
+    end
     redirect '/'
   end
 

@@ -1,11 +1,11 @@
+<ol>
 <% @tag.posts.each do |post| %>
-  <ol>
     <li>
       <label> Post: </label>
       <%= post.titulo %> <br />
       <a href= "/posts/<%= post.id %>">Detalhes</a> 
     </li>
-  </ol>
 <% end %>
+</ol>
 
 <a href='/'> Back </a>
